@@ -8,6 +8,7 @@ namespace AddressBookProblem
 {
     public class AddressBook
     {
+        List<Contact> addressBook = new List<Contact>(); //created list to store multiple contact
         public void CreateContact()
         {
             Console.WriteLine("Enter the detais :\n 1.First Name \n2.Last name \n3.Address \n4.City Name \n5.State Name \n.6.Zip code \n7.Phone Number \n8.Email Address ");
@@ -23,7 +24,7 @@ namespace AddressBookProblem
                 Email = Console.ReadLine(),
             };
             Console.WriteLine(contact.FirstName + "\n " + contact.LastName + "\n " + contact.Address + "\n " + contact.City + "\n " + contact.State + "\n " + contact.Zip+ "\n " + contact.PhoneNumber + "\n " + contact.Email);
-
+            addressBook.Add(contact);
         }
     }
 }
