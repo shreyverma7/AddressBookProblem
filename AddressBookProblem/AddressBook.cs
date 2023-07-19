@@ -11,9 +11,6 @@ namespace AddressBookProblem
     {
         List<Contact> addressBook = new List<Contact>(); //created list to store multiple contact
         Dictionary<string ,List<Contact>> dict = new Dictionary<string ,List<Contact>>();  //Like shrey have many contact and many more perple have many  contact
-
-
-
         public void CreateContact()
         {
             Console.WriteLine("Enter the detais :\n 1.First Name \n2.Last name \n3.Address \n4.City Name \n5.State Name \n.6.Zip code \n7.Phone Number \n8.Email Address ");
@@ -30,18 +27,13 @@ namespace AddressBookProblem
             };
             Console.WriteLine(contact.FirstName + "\n " + contact.LastName + "\n " + contact.Address + "\n " + contact.City + "\n " + contact.State + "\n " + contact.Zip+ "\n " + contact.PhoneNumber + "\n " + contact.Email);
             addressBook.Add(contact);
-           
         }
-
-
         public void AddAddressBookToDictionary()
         {
             string uniqueName = Console.ReadLine();
             dict.Add(uniqueName, addressBook);
-            addressBook = null;
+            addressBook = new List<Contact>();
         }
-
-
         public void EditContact(string name, string contactName)
         {
             foreach (var data in dict)
@@ -65,7 +57,7 @@ namespace AddressBookProblem
                                 case 3:
                                     contact.City = Console.ReadLine();
                                     break;
-                                case 4:
+                                   case 4:
                                     contact.State = Console.ReadLine();
                                     break;
                                 case 5:
@@ -100,7 +92,7 @@ namespace AddressBookProblem
                 {
                     foreach (var item in data.Value)
                     {
-                        if (item.FirstName.Equals(name) || item.LastName.Equals(name))
+                        if (item.FirstName.Equals(contactName) || item.LastName.Equals(contactName))
                         {
                             contact = item;
                         }
@@ -109,12 +101,7 @@ namespace AddressBookProblem
                     data.Value.Remove(contact);
 
                 }
-                else
-                {
-                    Console.WriteLine("No dictionary with Key exist");
-                }
             }
-           
         }
 
         public void Display()
