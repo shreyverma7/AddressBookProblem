@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace AddressBookProblem
 {
@@ -112,12 +113,23 @@ namespace AddressBookProblem
                 {
                     contact = data.Value.Where(x => x.City.Equals(city)).ToList();
                 }
+                Console.WriteLine("The persons in the City are: ");
                 foreach (var Contact in contact)
                 {
-                    Console.WriteLine(Contact.FirstName + " " + Contact.LastName + " is found in that City");
+                    Console.WriteLine(Contact.FirstName + " " + Contact.LastName);
                     cityCount++;
                 }
                 Console.WriteLine("Number of Persons In the City is " + cityCount);
+                Console.WriteLine("Enter the Persone Name to Search in the city");
+                string name = Console.ReadLine();
+                foreach (var Contact in contact)
+                {
+                    if (Contact.FirstName.Equals(name))
+                    {
+                        Console.WriteLine("The Person is found in the given city and his phone number is");
+                        Console.WriteLine(Contact.FirstName + " " + Contact.LastName + " " + Contact.PhoneNumber);
+                    }
+                }
             }
             else
             {
@@ -134,6 +146,16 @@ namespace AddressBookProblem
                     StateCount++;
                 }
                 Console.WriteLine("Number of Persons in the State is " + StateCount);
+                Console.WriteLine("Enter the Persone Name to Search in this State");
+                string name = Console.ReadLine();
+                foreach (var Contact in contact)
+                {
+                    if (Contact.FirstName.Equals(name))
+                    {
+                        Console.WriteLine("The Person is found in the given state and his phone number is");
+                        Console.WriteLine(Contact.FirstName + " " + Contact.LastName + " " + Contact.PhoneNumber);
+                    }
+                }
             }
         }
 
