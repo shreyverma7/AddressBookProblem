@@ -2,8 +2,10 @@
 
 internal class Program
 {
-    private static void Main(string[] args)
+     static string inventory_filePath = @"D:\Bridgelabz Problem statement\AddressBookProblem\AddressBookProblem\ContactBook.json";
+    public static void Main(string[] args)
     {
+
 
         Console.WriteLine("Welcome to Address book Problem :");
         bool flag = true;
@@ -18,9 +20,11 @@ internal class Program
                 case 1:
                     Console.WriteLine("Creating contact : -->\n");
                     addressBook.CreateContact();
+                    addressBook.WriteToJsonFile(inventory_filePath);
                     break;
                 case 2: 
                     addressBook.AddAddressBookToDictionary();
+                    addressBook.WriteToJsonFile(inventory_filePath);
                     break;
                 case 3:
                     Console.WriteLine("Enter Key");
@@ -28,6 +32,7 @@ internal class Program
                     Console.WriteLine("Enter name to Edit contact details");
                     input = Console.ReadLine();
                     addressBook.EditContact(key,input);
+                    addressBook.WriteToJsonFile(inventory_filePath);
                     break;
                 case 4:
                     Console.WriteLine("Enter key\n");
@@ -35,6 +40,7 @@ internal class Program
                     Console.WriteLine("Enter name to delete contact details");
                    input = Console.ReadLine();
                     addressBook.DeleteContact(key,input);
+                    addressBook.WriteToJsonFile(inventory_filePath);
                     break;
                 case 5:
                     addressBook.Display();

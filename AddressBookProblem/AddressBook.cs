@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace AddressBookProblem
 {
     public class AddressBook
     {
+        int Count = 0;
         List<Contact> addressBook = new List<Contact>(); //created list to store multiple contact
         Dictionary<string ,List<Contact>> dict = new Dictionary<string ,List<Contact>>();  //Like shrey have many contact and many more perple have many  contact
         public void CreateContact()
@@ -25,8 +27,23 @@ namespace AddressBookProblem
                 PhoneNumber = Convert.ToInt32(Console.ReadLine()),
                 Email = Console.ReadLine(),
             };
-            Console.WriteLine(contact.FirstName + "\n " + contact.LastName + "\n " + contact.Address + "\n " + contact.City + "\n " + contact.State + "\n " + contact.Zip+ "\n " + contact.PhoneNumber + "\n " + contact.Email);
-            addressBook.Add(contact);
+
+            foreach (var data in dict)
+            {
+                foreach (var item in data.Value)
+                {
+                    if (item.FirstName.Equals(contact.FirstName))
+                    {
+                        Console.WriteLine("Your name is Already Registred in the Address Book");
+                        Count++;
+                    }
+                }
+            }
+            if (Count == 0)
+            {
+                Console.WriteLine(contact.FirstName + " " + contact.LastName + " is added to the contact");
+                addressBook.Add(contact);
+            }
         }
         public void AddAddressBookToDictionary()
         {
@@ -116,6 +133,11 @@ namespace AddressBookProblem
                 }
             }
             
+        }
+        public void WriteToJsonFile(string filePath)
+        {
+            var json = JsonConvert.SerializeObject(dict);
+            File.WriteAllText(filePath, json);
         }
     }
 }
