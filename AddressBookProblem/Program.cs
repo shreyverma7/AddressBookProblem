@@ -13,7 +13,7 @@ internal class Program
         AddressBook addressBook = new AddressBook();
         while (flag)
         {
-            Console.WriteLine("Enter the option to proceed \n1. Create Contact \n2. Add to Dictionary \n3. Edit contact  \n4. Delete Details \n5. display \n6. exit");
+            Console.WriteLine("Enter the option to proceed \n1. Create Contact \n2. Add to Dictionary \n3. Edit contact  \n4. Delete Details \n5. display\n6. Search By city \n7. exit");
             int option = Convert.ToInt32(Console.ReadLine());
             switch (option)
             {
@@ -45,7 +45,10 @@ internal class Program
                 case 5:
                     addressBook.Display();
                     break;
-                case 6: 
+                case 6:
+                    addressBook.SearchByCityOrState();
+                    break;
+                case 7: 
                     flag = false;
                     break;
                 default:

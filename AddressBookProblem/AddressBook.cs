@@ -98,7 +98,39 @@ namespace AddressBookProblem
           
             }
         }
-
+        public void SearchByCityOrState()
+        {
+            Console.WriteLine("Enter the number to Search 1.City\n2.State");
+            int num = Convert.ToInt32(Console.ReadLine());
+            if (num == 1)
+            {
+                Console.WriteLine("Enter the city to search");
+                string city = Console.ReadLine();
+                List<Contact> contact = new List<Contact>();
+                foreach (var data in dict)
+                {
+                    contact = data.Value.Where(x => x.City.Equals(city)).ToList();
+                }
+                foreach (var Contact in contact)
+                {
+                    Console.WriteLine(Contact.FirstName + " " + Contact.FirstName + "is found in the Address Book");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Enter the State to search");
+                string state = Console.ReadLine();
+                List<Contact> contact = new List<Contact>();
+                foreach (var data in dict)
+                {
+                    contact = data.Value.Where(x => x.State.Equals(state)).ToList();
+                }
+                foreach (var Contact in contact)
+                {
+                    Console.WriteLine(Contact.FirstName + " " + Contact.FirstName + "is found in the Address Book");
+                }
+            }
+        }
 
         public void DeleteContact (string name, string contactName)
         {
