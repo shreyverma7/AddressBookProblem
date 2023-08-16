@@ -3,6 +3,7 @@
 internal class Program
 {
      static string inventory_filePath = @"D:\Bridgelabz Problem statement\AddressBookProblem\AddressBookProblem\ContactBook.json";
+    static string filepath = @"D:\Bridgelabz Problem statement\AddressBookProblem\AddressBookProblem\ContactFile.txt";
     public static void Main(string[] args)
     {
 
@@ -13,7 +14,8 @@ internal class Program
         AddressBook addressBook = new AddressBook();
         while (flag)
         {
-            Console.WriteLine("Enter the option to proceed \n1. Create Contact \n2. Add to Dictionary \n3. Edit contact  \n4. Delete Details \n5. display\n6. Search By city \n7.CityCount \n8.StateCount  \n9.Sort \n10. exit");
+            Console.WriteLine("Enter the option to proceed \n1. Create Contact \n2. Add to Dictionary \n3. Edit contact  \n4. Delete Details \n5. display\n6. Search By city " +
+                "\n7. CityCount \n8. StateCount  \n9. Sort \n10. Read File from text \n11. Write file to text \n12. exit");
             int option = Convert.ToInt32(Console.ReadLine());
             switch (option)
             {
@@ -54,11 +56,17 @@ internal class Program
                 case 8:
                     addressBook.CountState();
                     break;
-                case 10: 
-                    flag = false;
-                    break;
                 case 9:
                     addressBook.Sort();
+                    break;
+                case 10:
+                    addressBook.ReadFromStreamWriter(filepath);
+                    break;
+                case 11:
+                    addressBook.ReadFromStreamReader(filepath);
+                    break;
+                case 12: 
+                    flag = false;
                     break;
                 default:
                     Console.WriteLine("Invalid Value");
