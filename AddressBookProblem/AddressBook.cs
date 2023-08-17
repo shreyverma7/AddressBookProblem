@@ -197,11 +197,6 @@ namespace AddressBookProblem
             }
             
         }
-        public void WriteToJsonFile(string filePath)
-        {
-            var json = JsonConvert.SerializeObject(dict);
-            File.WriteAllText(filePath, json);
-        }
         public void CountCity()
         {
             int cityCount = 0;
@@ -308,6 +303,17 @@ namespace AddressBookProblem
                     }
                 }
             }
+        }
+        public void ReadFromJsonFile(string filepath)
+        {
+            var json = File.ReadAllText(filepath);
+            dict = JsonConvert.DeserializeObject<Dictionary<string, List<Contact>>>(json);
+            Display();
+        }
+        public void WriteToJsonFile(string filePath)
+        {
+            var json = JsonConvert.SerializeObject(dict);
+            File.WriteAllText(filePath, json);
         }
     }
 }

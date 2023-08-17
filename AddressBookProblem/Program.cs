@@ -16,7 +16,8 @@ internal class Program
         while (flag)
         {
             Console.WriteLine("Enter the option to proceed \n1. Create Contact \n2. Add to Dictionary \n3. Edit contact  \n4. Delete Details \n5. display\n6. Search By city " +
-                "\n7. CityCount \n8. StateCount  \n9. Sort \n10. Read File from text \n11. Write file to text \n12. Read CSV file \n13. Write CSV file \n14. exit");
+                "\n7. CityCount \n8. StateCount  \n9. Sort \n10. Read File from text \n11. Write file to text \n12. Read CSV file \n13. Write CSV file" +
+                "\n14. Read from JSON \n15. Write to JSON \n16. exit");
             int option = Convert.ToInt32(Console.ReadLine());
             switch (option)
             {
@@ -72,7 +73,13 @@ internal class Program
                 case 13:
                     addressBook.WriteCSVfile(ContactCSVfilepath);
                     break;
-                case 14: 
+                case 14:
+                    addressBook.ReadFromJsonFile(inventory_filePath);
+                    break;
+                case 15:
+                    addressBook.WriteToJsonFile(inventory_filePath);
+                    break;
+                case 16: 
                     flag = false;
                     break;
                 default:
